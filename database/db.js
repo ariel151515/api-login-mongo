@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
+//mongodb connection
 mongoose
     .connect(process.env.URI)
-    .then(() => console.log('db conectada 🚀'))
-    .catch(error => console.log('fallo la conexion' + error))
+    .then(() => console.log("Connected to MongoDB Atlas"))
+    .catch((error) => console.error(error));
