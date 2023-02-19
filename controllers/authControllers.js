@@ -1,15 +1,18 @@
 const User = require("../models/User");
 
-
 // Guarda al usuario en la base de datos 
 const registerUser = async (req, res) => {
-    const { name, email, password, tokenConfirm } = req.body;
+    const { name, email, password } = req.body;
+
     try {
+
         let user = await User.findOne({ email })
         if (user) throw new Error('Ya existe el usuario')
 
-        user = new User({ name, email, password, tokenConfirm })
+        user = new User({ name, email, password })
         await user.save()
+
+        res.send('Usuario registrado con exito')
         console.log('El usuarios e creo con exito')
 
     } catch (error) {
@@ -20,6 +23,9 @@ const registerUser = async (req, res) => {
 }
 
 
+
+
+
 const loginForm = (req, res) => {
     res.send('Esta eslogin')
 }
@@ -28,6 +34,10 @@ const loginForm = (req, res) => {
 const home = (req, res) => {
     res.send('Home')
 }
+
+
+
+
 
 module.exports = {
     loginForm,
