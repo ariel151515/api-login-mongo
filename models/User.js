@@ -30,21 +30,20 @@ const userSchema = new Schema({
 
 
 userSchema.pre('save', async function (next) {
-
     if (!this.isModified('password')) return next()
-
     try {
         const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(this.password, salt)
         this.password = hash;
         next();
-
     } catch (err) {
-
         next();
     }
 })
 
 
+userSchema.methods.comparePassword = async function (canditePassword) {
+    return await bcrypt.compare(canditePassword, this.password) // le pasamos la contraseña a verificar junto con la que viene de la base de datoss
+}
 
 module.exports = mongoose.model('User', userSchema) //con esto crea la coleccion y accede al esquema
