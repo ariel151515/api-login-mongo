@@ -4,3 +4,5 @@ https://www.youtube.com/watch?v=k6gaP1AK4nQ
 min 1:27
 
 ultima actualizacion = 20/02/2023
+
+API RES = 'No se puede guardar seciones del clinete en el servidor'

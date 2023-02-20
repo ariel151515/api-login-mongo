@@ -12,6 +12,8 @@ const registerUser = async (req, res) => {
         await user.save()
 
         // Enviar correo electronico con la confirmacion de la cuenta
+
+
         // res.redirect('/login')
         res.send('Usuario registrado con exito')
         console.log('El usuarios e creo con exito')
@@ -65,6 +67,19 @@ const loginUser = async (req, res) => {
 }
 
 
+
+const muestraUsers = async (req, res) => {
+    try {
+        const user = await User.find()
+        res.json(user)
+
+    } catch (err) {
+        res.json({ err: err.message });
+    }
+}
+
+
+
 const home = (req, res) => {
     res.send('Home')
 }
@@ -75,5 +90,6 @@ module.exports = {
     loginUser,
     registerUser,
     home,
-    confirmarCuenta
+    confirmarCuenta,
+    muestraUsers
 }

@@ -5,10 +5,12 @@ const {
     loginUser,
     registerUser,
     home,
-    confirmarCuenta
+    confirmarCuenta,
+    muestraUsers
 } = require("../controllers/authControllers");
 
 router.get("/", home)
+router.get("/users", muestraUsers)
 router.post("/register", registerUser)
 router.post("/login", loginUser)
 router.get("/confirmacion/:token", confirmarCuenta)
